@@ -32,7 +32,7 @@ object StreamKafka {
     stream.map(record => (record.key, record.value))
 
     stream.foreachRDD { rdd =>
-      rdd(print)
+      rdd.each(print)
       /*val offsetRanges = rdd.asInstanceOf[HasOffsetRanges].offsetRanges
       rdd.mapPartitions { iter =>
         val osr: OffsetRange = offsetRanges(TaskContext.get.partitionId)
